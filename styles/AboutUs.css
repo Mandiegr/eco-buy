@@ -1,0 +1,39 @@
+.Container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .Image {
+    background-image: url('/assets/21.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 700px;
+    height: 400px;
+    
+  }
+  
+  .text {
+    width: 500px;
+    margin-left: 9rem;
+   
+    
+  }
+  
+  
+  .text .Button {
+    background-color: #304918;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+ 
+  }
+  
+.text a {
+  text-decoration: none;
+}

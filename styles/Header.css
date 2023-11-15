@@ -1,0 +1,27 @@
+/* styles/Header.module.css */
+   .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #304918; /*#717744*/
+    color: #ffffff;
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .navbar a {
+    margin-left: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .navbar a:hover {
+    /*border-bottom: 2px solid white;*/
+    border: none;
+  }
+  
