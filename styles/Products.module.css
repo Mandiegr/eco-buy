@@ -6,3 +6,21 @@
     margin-bottom: 3.5rem;
  }
 
+ /* ProductsPage*/
+ .product {
+  display: flex;
+  flex-direction:row;
+  }
+
+  .container {
+   display: flex;
+   justify-content: center; 
+   align-content: center;
+   flex-wrap: wrap; 
+   background-color: blue;
+   width: 300px;
+   height: 300px;
+ }
+ 
+
+ 

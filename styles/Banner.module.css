@@ -1,0 +1,15 @@
+
+
+.bannerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .backgroundImage {
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
