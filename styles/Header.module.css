@@ -1,6 +1,7 @@
-/* styles/Header.module.css */
+
    .header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -12,6 +13,7 @@
     font-size: 1.5rem;
     color: #ffffff;
     text-decoration: none;
+    flex-wrap: wrap;
   }
   
   .navbar a {
@@ -21,7 +23,6 @@
   }
   
   .navbar a:hover {
-    /*border-bottom: 2px solid white;*/
     border: none;
   }
   

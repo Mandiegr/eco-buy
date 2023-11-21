@@ -1,6 +1,7 @@
 // // components/Header.js
 import Link from 'next/link';
 import styles from '../styles/Header.module.css';
+import { ChevronLeft, Cart3, House, Heart } from 'react-bootstrap-icons';
 
 
 export const Header = () => {
@@ -8,22 +9,24 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <h1>EcoBuy</h1>
+      <Link href={"/"}>
+          <ChevronLeft size={26} />
+      </Link>
       </div>
+      <div>
       <nav className={styles.navbar}>
-        <Link href={"/products"} >
-          Products
+        <Link href={"/"} >
+          <House size={26}/>
         </Link>
-        <Link href={"/about"}>
-          About Us
+        <Link href={"/products/details"}>
+        <Heart size={26}/>
         </Link>
-        <Link href={"/login"}>
-          Login
-        </Link>
-        <Link href={"/cart"}>
-          Cart
+        <Link href={"/products/details/cart"}>
+         <Cart3 size={26}/>
         </Link>
       </nav>
+      </div>
+     
     </header>
   );
 };
