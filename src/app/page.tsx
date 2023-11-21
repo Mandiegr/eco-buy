@@ -1,20 +1,21 @@
 import React from 'react';
 import {Header} from '../../components/Header';
 import {Banner} from '../../components/Banner';
-import {ProductList, products, } from '../../components/Products';
+import { ProductInitial, products, } from '../../components/ProductsPage';
 import {AboutSection} from '../../components/AboutUs';
 import {Footer} from '../../components/footer';
+import { NavBar } from '../../components/NavBar';
 
 export default  function Home() {
 
 
   return (
     <div>
-      <Header />
+      <NavBar />
       <Banner />
-      <ProductList products={products} />
+      <ProductInitial products={products} />
       <AboutSection />
-      <ProductList products={products} />
+      <ProductInitial products={products} />
       <Footer />
     </div>
   );
