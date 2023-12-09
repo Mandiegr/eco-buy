@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import styles from '../styles/Navbar.module.css';
 import { Cart3, Heart, Justify, Person } from 'react-bootstrap-icons';
@@ -18,7 +17,7 @@ export const NavBar = () => {
         <Link href="/">Home</Link>
         <Link href="/about">About Us</Link>
         <Link href="/products">Products</Link>
-        <Link href="/login">Login</Link>
+        <Link href="/userAccess">Login</Link>
         <Link href="#contact">contact</Link>
       </nav>
       <div className={styles.icons}>
