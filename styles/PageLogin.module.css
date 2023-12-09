@@ -6,38 +6,105 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url('https://as2.ftcdn.net/v2/jpg/03/54/94/49/1000_F_354944901_SzU5v3KbpDM0752i9d7C3gSMjFexisw1.jpg');
+  background-size: cover;
+  overflow: hidden;
+  
 }
+
 
 .container span {
   color: green;
+  font-weight: 200;
+  
+}
+
+.container h3 {
+  color: rgba(255, 255, 255, 0.822);
+}
+
+.formContainer{
+  background-color: rgb(255, 255, 255);
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ /* border:  solid  rgba(4, 46, 4, 0.671);
+  border-width: 20px;*/
+}
+
+.logo {
+  margin-bottom: 10px ;
 }
 
 .button {
-  height: 56px;
-  width: 650px;
-  color: var(--text);
-  background: none;
-  font-size: 18px;
-  border-width: 2px;
-  border-style: solid;
-  border-image: linear-gradient(to right, #0a6420, #333) 1;
-  margin-top: 32px;
+  height: 20px;
+  width: 130px;
+  background-color: rgb(8, 102, 8);
+  color: rgb(255, 255, 255);
+  border: none; 
+  border-radius: 2px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s;
   cursor: pointer;
 }
 
-.button > svg {
-  font-size: 24px;
+.buttonGoogle{
+  display: inline-block;
+  color: #ffffff; 
+  background-color: transparent;
+  border: none; 
+  border-radius: 50%; 
+  padding: 15px 25px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  margin-top: -10px;
+}
+
+
+.button > svg , .buttonGoogle:hover {
+  font-size: 18px;
   margin-right: 7px;
 }
 
 .button:hover {
-  background-color:rgb(221, 236, 221);
+  background-color:rgba(29, 77, 39, 0.562);
+}
+.icons {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin-top: 0.2rem;
+  color: gray;
 }
 
+.input {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid rgba(148, 187, 133, 0.651) ;
+  outline: none;
+  padding-left: 2.5rem;
+  padding-right: 0.4rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  border-radius: 0.25rem;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+  color: gray;
+}
+.passwordInput {
+  position: relative;
+}
 .user {
   display: flex;
   align-items: center;
@@ -51,3 +118,21 @@
   border-radius: 70px;
   margin-bottom: 16px;
 }
+
+.bottonCreate button{
+   display: flex;
+   align-content:center;
+   justify-content: center;
+   flex-direction: row;
+   cursor: pointer;
+   border: none;
+   background-color: #ffffff00;
+   color: darkolivegreen;
+   
+}
+
+.bottonCreate button:hover {
+  background-color: rgba(242, 252, 239, 0.822);
+  color: rgb(82, 126, 39);
+}
+
