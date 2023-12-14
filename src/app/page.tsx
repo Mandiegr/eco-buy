@@ -1,18 +1,18 @@
+"use client";
 import React from 'react';
-import {Header} from '../../components/Header';
-import {Banner} from '../../components/Banner';
 import { ProductInitial, products, } from '../../components/ProductsPage';
 import {AboutSection} from '../../components/AboutUs';
 import {Footer} from '../../components/footer';
 import { NavBar } from '../../components/NavBar';
+import { Banner } from './styles';
 
 export default  function Home() {
 
 
   return (
-    <div>
+    <div >
       <NavBar />
-      <Banner />
+      <Banner/>
       <ProductInitial products={products} />
       <AboutSection />
       <ProductInitial products={products} />
