@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { EaselFill, Heart, HeartFill } from 'react-bootstrap-icons';
+import { Heart, HeartFill } from 'react-bootstrap-icons';
 import { Header } from '../../../../components/Header';
+import Link from 'next/link';
 
 interface DetailsScreenProps {
   productName: string;
@@ -11,14 +12,14 @@ interface DetailsScreenProps {
   buttonLabel: string;
 }
 
-const Details: React.FC<DetailsScreenProps> = ({ productName, image, value, description, buttonLabel }) => {
+const Details: React.FC<DetailsScreenProps> = ({ productName, image }) => {
   return (
     <>
       <Header />
       <div style={styles.container}>
         <div style={styles.content}>
           <div style={styles.imageContainer}>
-            <Image src={image} alt={productName} width={500} height={400} />
+            <Image src={'/assets/23.png'} alt={productName} width={500} height={400} />
           </div>
 
           <div style={styles.detailsContainer}>
@@ -30,12 +31,12 @@ const Details: React.FC<DetailsScreenProps> = ({ productName, image, value, desc
             </div>
 
             <div style={styles.item}>
-              <div style={styles.productName}>Creme corporal de Coco</div>
-              <div style={styles.subProductName}>EcoBuy</div>
+              <div style={styles.productName}>kite complect</div>
+              <div style={styles.subProductName}>coconut</div>
             </div>
 
             <div style={styles.priceContainer}>
-              <div style={styles.value}>R$ 47,99</div>
+              <div style={styles.value}>R$ 100,99</div>
               <div style={styles.buttonContainer}>
                 <div style={styles.button}>
                   <div style={styles.buttonLabel}>+ 1 - </div>
@@ -52,10 +53,11 @@ const Details: React.FC<DetailsScreenProps> = ({ productName, image, value, desc
                 looking at The point of using Lorem Ipsum is that it has a
               </div>
             </div>
-
-            <div style={styles.buttonAdd}>
-              <div style={styles.buttonText}>Add To Bag</div>
-            </div>
+          <Link href={'/products/details/cart'}>
+                <div style={styles.buttonAdd}>
+                   <div style={styles.buttonText}>Add To Bag</div>
+                </div>
+          </Link>
           </div>
         </div>
       </div>
@@ -69,7 +71,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     flexDirection: 'column', 
     alignContent: 'center',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: '5rem',
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: 800, 
