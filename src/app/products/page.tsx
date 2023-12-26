@@ -1,30 +1,38 @@
-import React from 'react';
-import Product from "../products/data/ProductList";
+"use client"
+import React, { useEffect, useState } from 'react';
 import { Header } from '../../../components/Header';
+import Products from '@/util/productListe';
 
-const ProductsPage = () => {
-  return (
-    <section>
-    <Header/>
-     <div style={{ flex: 1 , backgroundColor:' #fff', width:'100%'}}>   {/*#ffe5aa*/}
-       
-       
-       <div style={{ display: 'flex',flexDirection:'row', justifyContent:'center', padding:'30px'}}>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-          <Product/>
-       </div>
-      
-      </div>
-
-    </section> 
-   
-  );
+const getData = async () => {
+  const res = await fetch("http://localhost:3333/products");
+  if (!res.ok) {
+    throw new Error("Falha ao buscar os dados");
+  }
+  return res.json();
 };
 
+const ProductsPage = () => {
+  const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData();
+        setProducts(data);
+      } catch (error) {
+        console.error('Erro ao buscar produtos:', error);
+      }
+    };
+
+    fetchData();
+  }, []); 
+
+  return (
+    <section>
+      <Header />
+      <Products products={products} />
+    </section>
+  );
+};
 
 export default ProductsPage;
