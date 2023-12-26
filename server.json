@@ -1,0 +1,78 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "image": "/assets/22.png",
+        "name": "complete coconut oil essentials kit",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "100,00"
+      },
+      {
+        "id": 2,
+        "image": "/assets/23.png",
+        "name": "almond cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "60,00"
+      },
+      {
+        "id": 3,
+        "image": "/assets/24.png",
+        "name": "aloe vera cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "45,00"
+      },
+      {
+        "id": 4,
+        "image": "/assets/25.png",
+        "name": "coconut cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "85,00"
+      },
+      {
+        "id": 5,
+        "image": "/assets/26.png",
+        "name": "coconut cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "84,00"
+      },
+      {
+        "id": 6,
+        "image": "/assets/27.png",
+        "name": "coconut cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "70,00"
+      },
+      {
+        "id": 7,
+        "image": "/assets/28.png",
+        "name": "coconut cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "55,00"
+      },
+      {
+        "id": 8,
+        "image": "/assets/29.png",
+        "name": "coconut cream",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "39,00"
+      },
+      {
+        "id": 9,
+        "image": "/assets/33.png",
+        "name": "perfume",
+        "description": "Readable content of a page when looking at The point of using Lorem Ipsum is that it has a readable content of a page when looking at The point of using Lorem Ipsum is that.",
+        "category": "saude e beleza",
+        "price": "95,00"
+      }
+      
+      
+    ]
+  } 
