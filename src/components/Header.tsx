@@ -69,7 +69,8 @@ const Seta = styled.div`
     color: #ce0d30;
     text-decoration: none;
     flex-wrap: wrap;
-    @media (max-width: 490px) {
+
+    @media (max-width: 600px) and (min-width: 320px){
       display: none;
      padding-right: 6rem;
     }
@@ -93,7 +94,7 @@ const Navbar = styled.nav`
       color: #228b22; 
     }
 
-    @media (max-width: 480px) {
+    @media  (max-width: 600px) and (min-width: 320px) {
       margin: 0.5rem;
       font-size: 1rem;
       display:none;
