@@ -99,13 +99,18 @@ export const ButtonAdd = styled.div`
   margin-top: 20px;
 
   @media (max-width: 600px) {
-   width: 22rem
+   width: 21rem
+  }
+  @media (max-width: 420px){
+   width: 20rem
+  }
+
+  @media (max-width: 390px){
+   width: 18rem
   }
 
 
-  @media  (max-width: 320px) {
-    width: 18rem
-  }
+  
 `;
 
 export const ButtonText = styled.div`
