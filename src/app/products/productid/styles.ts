@@ -99,7 +99,7 @@ export const ButtonAdd = styled.div`
   margin-top: 20px;
 
   @media (max-width: 600px) and (min-width: 412px)   {
-   width: 20rem
+   width: 20.5rem
   }
   @media (max-width: 390px) and (min-width: 300px)   {
    width: 18rem
