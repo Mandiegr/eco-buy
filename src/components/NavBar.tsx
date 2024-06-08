@@ -127,7 +127,7 @@ const Navbar = styled.nav`
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 480px) and (min-width: 360px) {
     flex-direction: column;
     align-items: center;
     display: none;
