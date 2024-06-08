@@ -9,5 +9,9 @@ export const Banner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 491px) {
+    height: 50vh;
+  }
 
 `
+

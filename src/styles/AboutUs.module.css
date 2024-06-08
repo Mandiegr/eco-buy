@@ -1,0 +1,62 @@
+.Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+  }
+  
+  .Image {
+    background-image: url('https://as2.ftcdn.net/v2/jpg/06/29/58/55/1000_F_629585524_K40YLs7DbderQHV2S2Tt5HrAKbLsaMsg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 700px;
+    height: 400px;
+    
+  }
+  
+  .text {
+    width: 500px;
+    margin-left: 9rem;
+    
+  }
+  
+  
+  .text .Button { 
+    display: flex;
+    background-color: #304918;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   
+ 
+  }
+  
+.text a {
+  text-decoration: none;
+}
+
+
+@media (max-width: 480px) {
+  .Container {
+   flex-direction:column;
+   flex-wrap: wrap;
+
+  }
+
+  .Image {
+    width: 400px; 
+    height: 300px; 
+    margin-bottom: 1rem;
+   }
+
+  .text {
+    width: 100%;
+    margin-left: 0; 
+    text-align: center; 
+}
+
+}

@@ -1,205 +1,162 @@
-"use client"
+'use client';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { Heart, HeartFill } from 'react-bootstrap-icons';
-import { Header } from '../../../../components/Header';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, get } from 'firebase/database';
+import { firebaseConfig } from '../../services/firebase';
+import { Header } from '../../../components/Header';
 import Link from 'next/link';
-import { getSingleProduct } from "@/helpers";
+import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
+import { Heart, HeartFill } from 'react-bootstrap-icons';
+import ProductInitial, { products } from '@/components/Product';
+import Promo from '@/components/Category';
+import BannerTest, { bannerProducts } from '@/components/banner';
+import LoadingSpinner from '@/components/Loading';
+import styled from 'styled-components';
+import CommentSection from '@/components/Comment';
+import { AboutProducts, AboutProductsDiv, ActionRow, Button, ButtonAdd, ButtonContainer, ButtonText, Container, Content, Description, DetailsContainer, FlexColumn, HorizontalLine, Icon, ImageContainer, Item, PriceContainer, ProductName, Quantity, Value } from './styles';
 
+interface Product {
+  id: number;
+  nome: string;
+  preco: number;
+  descricao: string;
+  imagens: string[];
+  quantity: number;
+}
 
-type Props = {
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type SearchParams = { [key: string]: string | string[] | undefined };
 
-const Details = ({ searchParams }: Props) => {
-  const [product, setProduct] = useState<any | null>(null);
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+const Details = ({ searchParams }: { searchParams: SearchParams }) => {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const { dispatch, state } = useCart();
+  const [category, setCategory] = useState<string>('');
+
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch({ type: 'ADD_TO_CART', product });
+    }
+  };
+
+  const increaseQuantity = () => {
+    if (product) {
+      dispatch({ type: 'INCREASE_QUANTITY', productId: product.id });
+      setProduct((prevProduct) => prevProduct ? { ...prevProduct, quantity: prevProduct.quantity + 1 } : prevProduct);
+    }
+  };
+
+  const decreaseQuantity = () => {
+    if (product && product.quantity > 1) {
+      dispatch({ type: 'DECREASE_QUANTITY', productId: product.id });
+      setProduct((prevProduct) => prevProduct ? { ...prevProduct, quantity: prevProduct.quantity - 1 } : prevProduct);
+    }
+  };
+
+  const toggleFavorite = () => {
+    if (product) {
+      dispatch({ type: 'TOGGLE_FAVORITE', product });
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProduct = async () => {
       try {
-        const idString = searchParams?.id;
-        const id = Number(idString);
-        const data = await getSingleProduct(id);
+        const productId = typeof searchParams?.id === 'string' ? parseInt(searchParams.id) : undefined;
 
-        if (data) {
-          setProduct(data);
+        if (productId !== undefined && !isNaN(productId)) {
+          const productRef = ref(database, `products/${productId}`);
+          const snapshot = await get(productRef);
+          if (snapshot.exists()) {
+            const productData = snapshot.val() as Product;
+            const cartProduct = state.products.find(p => p.id === productData.id);
+            setProduct(cartProduct ? { ...productData, quantity: cartProduct.quantity } : { ...productData, quantity: 1 });
+          } else {
+            console.error('Produto não encontrado');
+          }
         } else {
-          console.error('Produto não encontrado');
+          console.error('ID do produto inválido');
         }
       } catch (error) {
         console.error('Erro ao buscar detalhes do produto:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData();
-  }, [searchParams]);
+    fetchProduct();
+  }, [searchParams?.id, state.products]);
 
   return (
     <>
-      <Header />
-
-      {product ? (
-        <div style={styles.container}>
-          <div style={styles.content}>
-            <div style={styles.imageContainer}>
-              <Image src={product?.image} alt="" width={500} height={500} />
-            </div>
-
-            <div style={styles.detailsContainer}>
-              <div style={styles.icon}>
-                <Heart size={30} color={'#304918'} />
-              </div>
-              <div style={styles.icon}>
-                <HeartFill size={30} color={'#304918'} />
-              </div>
-
-              <div style={styles.item}>
-                <div style={styles.productName}>{product?.name}</div>
-                <div style={styles.subProductName}>coconut</div>
-              </div>
-
-              <div style={styles.priceContainer}>
-                <div style={styles.value}> {product?.price}</div>
-                <div style={styles.buttonContainer}>
-                  <div style={styles.button}>
-                    <div style={styles.buttonLabel}> + 1 - </div>
-                  </div>
-                </div>
-              </div>
-
-              <div style={styles.aboutProducts}>
-                <div style={styles.aboutProductsDiv}>About Products</div>
-                <div style={styles.description}>
-                  {product?.description}
-                </div>
-              </div>
-              <Link href={'/products/cart'}>
-                <div style={styles.buttonAdd}>
-                  <div style={styles.buttonText}>Add To Bag</div>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+      <FlexColumn>
+        <Header />
+        <Promo setCategory={setCategory} />
+      </FlexColumn>
+      {loading ? (
+        <LoadingSpinner />
       ) : (
-        <p>Carregando...</p>
+        <>
+          {product ? (
+            <Container>
+              <Content>
+                <ImageContainer>
+                  <Image src={product?.imagens[0]} alt={product?.nome} style={{ maxHeight: '300px', display: 'flex', justifyItems: 'center' }} width={400} height={400} />
+                </ImageContainer>
+
+                <DetailsContainer>
+                  <Item>
+                    <ProductName>{product?.nome}</ProductName>
+                  </Item>
+
+                  <PriceContainer>
+                    <Value>R$ {product?.preco.toFixed(2)}</Value>
+                    <ButtonContainer>
+                      <Button onClick={decreaseQuantity}>-</Button>
+                      <Quantity>{product?.quantity}</Quantity>
+                      <Button onClick={increaseQuantity}>+</Button>
+                    </ButtonContainer>
+                  </PriceContainer>
+
+                  <AboutProducts>
+                    <AboutProductsDiv>About Products</AboutProductsDiv>
+                    <Description>{product?.descricao}</Description>
+                  </AboutProducts>
+
+                  <ActionRow>
+                    <Link href="/products/cart">
+                      <ButtonAdd onClick={handleAddToCart}>
+                        <ButtonText>Add To Cart</ButtonText>
+                      </ButtonAdd>
+                    </Link>
+
+                    <Icon onClick={toggleFavorite}>
+                      {state.favorites.some((p) => p.id === product.id) ? (
+                        <HeartFill size={30} color={'#304918'} />
+                      ) : (
+                        <Heart size={30} color={'#304918'} />
+                      )}
+                    </Icon>
+                  </ActionRow>
+                </DetailsContainer>
+              </Content>
+            </Container>
+          ) : (
+            <p>Produto não encontrado.</p>
+          )}
+          <HorizontalLine />
+          <CommentSection/>
+        
+          <BannerTest products={bannerProducts} />
+          <ProductInitial products={products} />
+        </>
       )}
-      </>
+    </>
   );
 };
 
-
 export default Details;
-
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignContent: 'center',
-    justifyContent: 'center',
-    marginTop: '5rem',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginBottom: '5rem',
-    maxWidth: 800,
-    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.1)',
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-  } as React.CSSProperties,
-  imageContainer: {
-    display: 'flex',
-    background: '#ffffff0',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.1)',
-  },
-  detailsContainer: {
-    margin: '1rem',
-    position: 'relative',
-  },
-  icon: {
-    marginRight: 20,
-    marginTop: 20,
-  },
-  item: {
-    marginLeft: 20,
-  },
-  productName: {
-    color: 'gray',
-    fontWeight: 'bold',
-    fontSize: 35,
-    marginBottom: 10,
-  },
-  subProductName: {
-    fontSize: 25,
-    marginBottom: 20,
-  },
-  priceContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    margin: 20,
-  },
-
-  value: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginRight: 10,
-    marginBottom: 30,
-  },
-
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '20%',
-    height: 45,
-
-    backgroundColor: '#304918',
-    borderRadius: 15,
-  },
-  buttonLabel: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'white',
-    display: 'flex',
-    alignContent: 'center',
-    justifyContent: 'center',
-  },
-  buttonAdd: {
-    display: 'flex',
-    width: '100%',
-    height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#304918',
-    borderRadius: 20,
-    marginTop: 20,
-  },
-
-  buttonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingTop: 10,
-  },
-  aboutProductsDiv: {
-    fontSize: 25,
-    marginBottom: 10,
-  },
-  aboutProducts: {
-    marginLeft: 20,
-    marginBottom: 20,
-  },
-  description: {
-    fontSize: 16,
-    marginBottom: 15,
-  },
-};
-
 

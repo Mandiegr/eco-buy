@@ -1,38 +1,37 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import { Header } from '../../../components/Header';
-import Products from '@/util/productListe';
-
-const getData = async () => {
-  const res = await fetch("http://localhost:3333/products");
-  if (!res.ok) {
-    throw new Error("Falha ao buscar os dados");
-  }
-  return res.json();
-};
+'use client';
+import React, { useState } from 'react';
+import Header from '../../components/Header';
+import ProductList from '@/util/productListe';
+import styled from 'styled-components';
+import Category from '@/components/Category';
 
 const ProductsPage = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getData();
-        setProducts(data);
-      } catch (error) {
-        console.error('Erro ao buscar produtos:', error);
-      }
-    };
-
-    fetchData();
-  }, []); 
+  const [category, setCategory] = useState<string>('');
 
   return (
-    <section>
-      <Header />
-      <Products products={products} />
-    </section>
+    <>
+      <Content>
+        <Header />
+        <Category setCategory={setCategory} />
+      </Content>
+      <div style={{ flex: 1, backgroundColor: '#ffffff', width: '100%', marginTop: '-80px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
+          <ProductList category={category} />
+        </div>
+      </div>
+    </>
   );
 };
 
 export default ProductsPage;
+
+
+const Content = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media(max-width: 590px) and (min-width: 360px) {
+  }
+
+`
