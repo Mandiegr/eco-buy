@@ -137,7 +137,7 @@ const MenuItem = styled.a`
   text-decoration: none;
   font-size: 1.5rem;
   margin: 10px 0;
-  @media (max-width: 491px) {
+  @media (max-width: 480px) {
     font-size: 1rem;
    
   }
@@ -152,7 +152,7 @@ const Button = styled.button`
   z-index: 1100;
   margin-top: -20px;
 
-  @media (max-width: 491px) {
+  @media (max-width: 480px) {
     display: block;
   }
 `;
@@ -219,7 +219,7 @@ const StyledChevronLeft = styled(ChevronLeft)`
     color: #228b22; 
   }
 
-  @media (max-width: 490px) {
+  @media (max-width: 480px) {
     font-size: 1.5rem;
   }
 `;
@@ -233,7 +233,7 @@ const Seta = styled.div`
   border: none;
   z-index: 1100;
 
-  @media (max-width: 490px) {
+  @media (max-width: 480px) {
     display: block;
   }
 `;
