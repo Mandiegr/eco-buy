@@ -98,15 +98,12 @@ export const ButtonAdd = styled.div`
   background-color:  ${Colors.green200};
   margin-top: 20px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 600px) and (min-width: 490px) {
    width: 21rem
   }
-  @media (max-width: 420px){
-   width: 20rem
-  }
-
-  @media (max-width: 390px){
-   width: 18rem
+ 
+  @media (max-width: 390px) and (min-width: 320px) {
+   width: 19rem
   }
 
 
