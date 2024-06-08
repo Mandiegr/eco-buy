@@ -137,7 +137,7 @@ const MenuItem = styled.a`
   text-decoration: none;
   font-size: 1.5rem;
   margin: 10px 0;
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     font-size: 1rem;
    
   }
@@ -152,7 +152,7 @@ const Button = styled.button`
   z-index: 1100;
   margin-top: -20px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     display: block;
   }
 `;
@@ -180,7 +180,7 @@ const StyledHeader = styled.header`
     width: 100%;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) and (min-width: 320px) {
     display: none;
 
     nav {
@@ -200,7 +200,7 @@ const NavItem = styled.a`
     text-decoration: underline;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     font-size: 0.8rem;
     margin: 0.5rem 0;
   }
@@ -219,7 +219,7 @@ const StyledChevronLeft = styled(ChevronLeft)`
     color: #228b22; 
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     font-size: 1.5rem;
   }
 `;
@@ -233,7 +233,7 @@ const Seta = styled.div`
   border: none;
   z-index: 1100;
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     display: block;
   }
 `;
