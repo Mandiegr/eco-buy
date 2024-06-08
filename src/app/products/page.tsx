@@ -31,7 +31,7 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  @media(max-width: 590px) and (min-width: 360px) {
+  @media(max-width: 600px) and (min-width: 320px) {
   }
 
 `
