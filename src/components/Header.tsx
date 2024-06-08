@@ -93,7 +93,7 @@ const Navbar = styled.nav`
       color: #228b22; 
     }
 
-    @media (max-width: 490px) {
+    @media (max-width: 480px) {
       margin: 0.5rem;
       font-size: 1rem;
       display:none;
@@ -110,7 +110,7 @@ const StyledChevronLeft = styled(ChevronLeft)`
     }
 
 
-  @media (max-width: 490px) {
+  @media (max-width: 480px) {
     font-size: 1rem;
   }
 `;
