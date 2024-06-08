@@ -121,6 +121,7 @@ const Navbar = styled.nav`
   }
 
   @media (max-width: 769px) {
+      display: none;
     a {
       font-size: 0.8rem;
       padding: 0 0.2rem;
