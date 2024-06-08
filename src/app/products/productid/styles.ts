@@ -95,10 +95,16 @@ export const ButtonAdd = styled.div`
   height: 50px;
   justify-content: center;
   align-items: center;
+  background-color:  ${Colors.green200};
   margin-top: 20px;
 
-  @media (max-width: 600px) and (min-width: 320px) {
-   width: 18rem
+  @media (max-width: 480px) {
+   width: 20rem
+  }
+
+
+  @media  (max-width: 390px) {
+    width: 18rem
   }
 `;
 
