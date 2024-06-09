@@ -108,9 +108,19 @@ const Details = ({ searchParams }: { searchParams: SearchParams }) => {
                 </ImageContainer>
 
                 <DetailsContainer>
+                <ActionRow>
                   <Item>
                     <ProductName>{product?.nome}</ProductName>
                   </Item>
+
+                  <Icon onClick={toggleFavorite}>
+                      {state.favorites.some((p) => p.id === product.id) ? (
+                        <HeartFill size={30} color={'#304918'} />
+                      ) : (
+                        <Heart size={30} color={'#304918'} />
+                      )}
+                    </Icon>
+                    </ActionRow>
 
                   <PriceContainer>
                     <Value>R$ {product?.preco.toFixed(2)}</Value>
@@ -126,21 +136,13 @@ const Details = ({ searchParams }: { searchParams: SearchParams }) => {
                     <Description>{product?.descricao}</Description>
                   </AboutProducts>
 
-                  <ActionRow>
+                 
                     <Link href="/products/cart">
                       <ButtonAdd onClick={handleAddToCart}>
                         <ButtonText>Add To Cart</ButtonText>
                       </ButtonAdd>
                     </Link>
-
-                    <Icon onClick={toggleFavorite}>
-                      {state.favorites.some((p) => p.id === product.id) ? (
-                        <HeartFill size={30} color={'#304918'} />
-                      ) : (
-                        <Heart size={30} color={'#304918'} />
-                      )}
-                    </Icon>
-                  </ActionRow>
+                 
                 </DetailsContainer>
               </Content>
             </Container>
