@@ -89,6 +89,15 @@ export const Quantity = styled.span`
   color: white;
 `;
 
+export const ActionRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: -15px;
+
+`;
+
 export const ButtonAdd = styled.div`
   display: flex;
   width: 32rem;
@@ -98,11 +107,8 @@ export const ButtonAdd = styled.div`
   background-color:  ${Colors.green200};
   margin-top: 20px;
 
-  @media (max-width: 540px) and (min-width: 412px)   {
+  @media (max-width: 500px) and (min-width: 430px)    {
    width: 21rem
-  }
-  @media (max-width: 390px) and (min-width: 300px)   {
-   width: 18rem
   }
   
 `;
@@ -136,13 +142,4 @@ export const HorizontalLine = styled.hr`
   margin-top: -55px;
 `;
 
-export const ActionRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: -15px;
 
-  
-  
-`;
