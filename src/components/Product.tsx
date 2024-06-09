@@ -37,8 +37,9 @@ export const ProductInitial: React.FC<ProductListProps> = ({ products }) => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 2,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    autoplay: true,
+   nextArrow: <SampleNextArrow />,
+   prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1280,
@@ -120,13 +121,12 @@ const CarouselContainer = styled.div`
   .slick-prev, .slick-next {
     color: #089703;
     font-size: 2rem;
-   // z-index: 1;
+    z-index: 1;
  }
 `;
 
 const ProductBox = styled.div`
-  margin: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #eeeeeecc;
   padding: 10px;
 `;
 
